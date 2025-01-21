@@ -61,8 +61,7 @@ struct SpacialImageView: View {
                     try shaderGraphMaterial.setParameter(
                         name: "LeftEye", value: .textureResource(leftImage))
 
-                    let rightImage = try await convertTexture(
-                        from: images.right)
+                    let rightImage = try await convertTexture(from: images.right)
                     try shaderGraphMaterial.setParameter(
                         name: "RightEye", value: .textureResource(rightImage))
 
@@ -102,7 +101,7 @@ struct SpacialImageView: View {
         -> TextureResource {
         try await TextureResource(
             image: image,
-            options: TextureResource.CreateOptions.init(semantic: nil))
+            options: TextureResource.CreateOptions.init(semantic: .color))
     }
 }
 
