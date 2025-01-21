@@ -13,7 +13,8 @@ struct Media: Identifiable {
     var url: URL?
 }
 
-struct ContentView: View {
+@Observable
+class ContentState {
     let allMedia: [Media] = [
         Media(
             url: Bundle.main.url(forResource: "IMG_1439", withExtension: "heic")
@@ -25,30 +26,8 @@ struct ContentView: View {
             url: Bundle.main.url(forResource: "IMG_1659", withExtension: "heic")
         )
     ]
-
-    var body: some View {
-        VStack {
-            ScrollView {
-                ForEach(allMedia) { media in
-                    HStack {
-                        if let url = media.url,
-                           let (left, right) = readMedia(url)
-                        {
-                            Image(uiImage: UIImage(cgImage: left))
-                                .resizable()
-                                .scaledToFit()
-                                .background(Color.red)
-                            Image(uiImage: UIImage(cgImage: right))
-                                .resizable()
-                                .scaledToFit()
-                                .background(Color.red)
-                        }
-                    }
-                }
-            }
-        }
-    }
-
+    
+    
     func readMedia(_ url: URL) -> (left: CGImage, right: CGImage)? {
         guard let source = CGImageSourceCreateWithURL(url as CFURL, nil) else {
             print("Url not valid")
@@ -63,6 +42,33 @@ struct ContentView: View {
             return nil
         }
         return (left: leftImage, right: rightImage)
+    }
+}
+
+struct ContentView: View {
+    @State var state = ContentState()
+    
+    var body: some View {
+        VStack {
+            ScrollView {
+                ForEach(state.allMedia) { media in
+                    HStack {
+                        if let url = media.url,
+                           let (left, right) = state.readMedia(url)
+                        {
+                            Image(uiImage: UIImage(cgImage: left))
+                                .resizable()
+                                .scaledToFit()
+                                .background(Color.red)
+                            Image(uiImage: UIImage(cgImage: right))
+                                .resizable()
+                                .scaledToFit()
+                                .background(Color.red)
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
