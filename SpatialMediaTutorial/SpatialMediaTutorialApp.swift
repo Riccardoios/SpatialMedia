@@ -28,7 +28,7 @@ struct SpatialMediaTutorialApp: App {
         }
         
         WindowGroup(id: WindowID.photo.rawValue) {
-            ContentView()
+            SpatialContainerView()
                 .environment(appModel)
         }
         

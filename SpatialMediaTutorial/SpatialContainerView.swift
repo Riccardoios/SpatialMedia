@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  SpatialContainerView.swift
 //  SpatialMediaTutorial
 //
 //  Created by Riccardo Carlotto on 20/01/25.
@@ -23,7 +23,7 @@ class ContentState {
     ]
 }
 
-struct ContentView: View {
+struct SpatialContainerView: View {
     @State var state = ContentState()
 
     var body: some View {
@@ -45,6 +45,6 @@ struct ContentView: View {
 
 
 #Preview(windowStyle: .automatic) {
-    ContentView()
+    SpatialContainerView()
         .environment(AppModel())
 }
