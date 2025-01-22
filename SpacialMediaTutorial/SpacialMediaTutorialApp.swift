@@ -14,8 +14,9 @@ struct SpacialMediaTutorialApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(appModel)
+//            ContentView()
+//                .environment(appModel)
+            SpatialVideoView(state: SpatialVideoState())
         }
 
         ImmersiveSpace(id: appModel.immersiveSpaceID) {
