@@ -15,6 +15,17 @@ enum WindowID: String, CaseIterable, Identifiable {
     var id: UUID {
         UUID()
     }
+    
+    var description: String {
+        switch self {
+        case .main:
+            return "Main"
+        case .photo:
+            return "Photo"
+        case .video:
+            return "Video"
+        }
+    }
 }
 
 @main

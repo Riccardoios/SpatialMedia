@@ -9,10 +9,11 @@ import SwiftUI
 
 struct MainView: View {
     @Environment(\.openWindow) private var openWindow
+    let windowIDs: [WindowID] = [WindowID.photo, WindowID.video]
 
     var body: some View {
-        ForEach(WindowID.allCases) { window in
-            Button("Open \(window.rawValue) Window") {
+        ForEach(windowIDs) { window in
+            Button("Open Spatial \(window.description) Window") {
                 openWindow(id: window.rawValue)
             }
         }
