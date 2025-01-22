@@ -1,3 +1,13 @@
+//
+//  SpacialImageView.swift
+//  SpacialMediaTutorial
+//
+//  Created by Riccardo Carlotto on 22/01/25.
+//
+import SwiftUI
+import RealityKit
+import RealityKitContent
+
 struct SpacialImageView: View {
     let name: String
 
