@@ -11,7 +11,7 @@ enum WindowID: String, CaseIterable, Identifiable {
     case main
     case photo
     case video
-    
+
     var id: UUID {
         UUID()
     }
@@ -19,19 +19,24 @@ enum WindowID: String, CaseIterable, Identifiable {
 
 @main
 struct SpatialMediaTutorialApp: App {
-
+    @Environment(\.openImmersiveSpace) private var openImmersiveSpace
     @State private var appModel = AppModel()
 
     var body: some Scene {
         WindowGroup(id: WindowID.main.rawValue) {
             MainView()
+                .onAppear {
+                    Task {
+                        await openImmersiveSpace(id: appModel.immersiveSpaceID)
+                    }
+                }
         }
-        
+
         WindowGroup(id: WindowID.photo.rawValue) {
             SpatialContainerView()
                 .environment(appModel)
         }
-        
+
         WindowGroup(id: WindowID.video.rawValue) {
             SpatialVideoView(state: SpatialVideoState())
         }
