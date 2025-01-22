@@ -1,6 +1,6 @@
 //
-//  SpacialMediaTutorialApp.swift
-//  SpacialMediaTutorial
+//  SpatialMediaTutorialApp.swift
+//  SpatialMediaTutorial
 //
 //  Created by Riccardo Carlotto on 20/01/25.
 //
@@ -18,7 +18,7 @@ enum WindowID: String, CaseIterable, Identifiable {
 }
 
 @main
-struct SpacialMediaTutorialApp: App {
+struct SpatialMediaTutorialApp: App {
 
     @State private var appModel = AppModel()
 

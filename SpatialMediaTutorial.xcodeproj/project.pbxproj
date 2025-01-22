@@ -11,27 +11,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3A4A4ABB2D3EA8B90045E75E /* SpacialMediaTutorial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpacialMediaTutorial.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A4A4ABB2D3EA8B90045E75E /* SpatialMediaTutorial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpatialMediaTutorial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A4A4ABF2D3EA8B90045E75E /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		3A4A4AD22D3EA8B90045E75E /* Exceptions for "SpacialMediaTutorial" folder in "SpacialMediaTutorial" target */ = {
+		3A4A4AD22D3EA8B90045E75E /* Exceptions for "SpatialMediaTutorial" folder in "SpatialMediaTutorial" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
 			);
-			target = 3A4A4ABA2D3EA8B90045E75E /* SpacialMediaTutorial */;
+			target = 3A4A4ABA2D3EA8B90045E75E /* SpatialMediaTutorial */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		3A4A4ABD2D3EA8B90045E75E /* SpacialMediaTutorial */ = {
+		3A4A4ABD2D3EA8B90045E75E /* SpatialMediaTutorial */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				3A4A4AD22D3EA8B90045E75E /* Exceptions for "SpacialMediaTutorial" folder in "SpacialMediaTutorial" target */,
+				3A4A4AD22D3EA8B90045E75E /* Exceptions for "SpatialMediaTutorial" folder in "SpatialMediaTutorial" target */,
 			);
-			path = SpacialMediaTutorial;
+			path = SpatialMediaTutorial;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -51,7 +51,7 @@
 		3A4A4AB22D3EA8B90045E75E = {
 			isa = PBXGroup;
 			children = (
-				3A4A4ABD2D3EA8B90045E75E /* SpacialMediaTutorial */,
+				3A4A4ABD2D3EA8B90045E75E /* SpatialMediaTutorial */,
 				3A4A4ABE2D3EA8B90045E75E /* Packages */,
 				3A4A4ABC2D3EA8B90045E75E /* Products */,
 			);
@@ -60,7 +60,7 @@
 		3A4A4ABC2D3EA8B90045E75E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3A4A4ABB2D3EA8B90045E75E /* SpacialMediaTutorial.app */,
+				3A4A4ABB2D3EA8B90045E75E /* SpatialMediaTutorial.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -76,9 +76,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3A4A4ABA2D3EA8B90045E75E /* SpacialMediaTutorial */ = {
+		3A4A4ABA2D3EA8B90045E75E /* SpatialMediaTutorial */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3A4A4AD32D3EA8B90045E75E /* Build configuration list for PBXNativeTarget "SpacialMediaTutorial" */;
+			buildConfigurationList = 3A4A4AD32D3EA8B90045E75E /* Build configuration list for PBXNativeTarget "SpatialMediaTutorial" */;
 			buildPhases = (
 				3A4A4AB72D3EA8B90045E75E /* Sources */,
 				3A4A4AB82D3EA8B90045E75E /* Frameworks */,
@@ -89,14 +89,14 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				3A4A4ABD2D3EA8B90045E75E /* SpacialMediaTutorial */,
+				3A4A4ABD2D3EA8B90045E75E /* SpatialMediaTutorial */,
 			);
-			name = SpacialMediaTutorial;
+			name = SpatialMediaTutorial;
 			packageProductDependencies = (
 				3A4A4AC02D3EA8B90045E75E /* RealityKitContent */,
 			);
 			productName = SpacialMediaTutorial;
-			productReference = 3A4A4ABB2D3EA8B90045E75E /* SpacialMediaTutorial.app */;
+			productReference = 3A4A4ABB2D3EA8B90045E75E /* SpatialMediaTutorial.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -114,7 +114,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3A4A4AB62D3EA8B90045E75E /* Build configuration list for PBXProject "SpacialMediaTutorial" */;
+			buildConfigurationList = 3A4A4AB62D3EA8B90045E75E /* Build configuration list for PBXProject "SpatialMediaTutorial" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -128,7 +128,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3A4A4ABA2D3EA8B90045E75E /* SpacialMediaTutorial */,
+				3A4A4ABA2D3EA8B90045E75E /* SpatialMediaTutorial */,
 			);
 		};
 /* End PBXProject section */
@@ -161,7 +161,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"SpacialMediaTutorial/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"SpatialMediaTutorial/Preview Content\"";
 				DEVELOPMENT_TEAM = RZ6V227NLQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -187,7 +187,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"SpacialMediaTutorial/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"SpatialMediaTutorial/Preview Content\"";
 				DEVELOPMENT_TEAM = RZ6V227NLQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -328,7 +328,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3A4A4AB62D3EA8B90045E75E /* Build configuration list for PBXProject "SpacialMediaTutorial" */ = {
+		3A4A4AB62D3EA8B90045E75E /* Build configuration list for PBXProject "SpatialMediaTutorial" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3A4A4AD62D3EA8B90045E75E /* Debug */,
@@ -337,7 +337,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3A4A4AD32D3EA8B90045E75E /* Build configuration list for PBXNativeTarget "SpacialMediaTutorial" */ = {
+		3A4A4AD32D3EA8B90045E75E /* Build configuration list for PBXNativeTarget "SpatialMediaTutorial" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3A4A4AD42D3EA8B90045E75E /* Debug */,

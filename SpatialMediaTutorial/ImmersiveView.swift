@@ -1,6 +1,6 @@
 //
 //  ImmersiveView.swift
-//  SpacialMediaTutorial
+//  SpatialMediaTutorial
 //
 //  Created by Riccardo Carlotto on 20/01/25.
 //

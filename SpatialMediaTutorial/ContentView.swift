@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  SpacialMediaTutorial
+//  SpatialMediaTutorial
 //
 //  Created by Riccardo Carlotto on 20/01/25.
 //
@@ -32,7 +32,7 @@ struct ContentView: View {
                 HStack(spacing: 300) {
                     Spacer()
                     ForEach(state.allMedia) { media in
-                        SpacialImageView(name: media.name)
+                        SpatialImageView(name: media.name)
                             .frame(width: 537.6, height: 403.2)
                     }
                     Spacer()

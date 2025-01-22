@@ -1,6 +1,6 @@
 //
-//  SpacialImageView.swift
-//  SpacialMediaTutorial
+//  SpatialImageView.swift
+//  SpatialMediaTutorial
 //
 //  Created by Riccardo Carlotto on 22/01/25.
 //
@@ -8,7 +8,7 @@ import SwiftUI
 import RealityKit
 import RealityKitContent
 
-struct SpacialImageView: View {
+struct SpatialImageView: View {
     let name: String
 
     var body: some View {

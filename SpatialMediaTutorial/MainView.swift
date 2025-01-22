@@ -1,6 +1,6 @@
 //
 //  MainView.swift
-//  SpacialMediaTutorial
+//  SpatialMediaTutorial
 //
 //  Created by Riccardo Carlotto on 22/01/25.
 //
