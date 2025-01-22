@@ -7,13 +7,13 @@
 
 import SwiftUI
 import RealityKit
-import RealityKitContent
+import Studio
 
 struct ImmersiveView: View {
 
     var body: some View {
         RealityView { content in
-            if let immersiveContentEntity = try? await Entity(named: "Scene", in: realityKitContentBundle) {
+            if let immersiveContentEntity = try? await Entity(named: "AAA_MainScene", in: studioBundle) {
                 content.add(immersiveContentEntity)
             }
         }
