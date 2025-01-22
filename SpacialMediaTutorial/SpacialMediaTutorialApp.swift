@@ -7,15 +7,32 @@
 
 import SwiftUI
 
+enum WindowID: String, CaseIterable, Identifiable {
+    case main
+    case photo
+    case video
+    
+    var id: UUID {
+        UUID()
+    }
+}
+
 @main
 struct SpacialMediaTutorialApp: App {
 
     @State private var appModel = AppModel()
 
     var body: some Scene {
-        WindowGroup {
-//            ContentView()
-//                .environment(appModel)
+        WindowGroup(id: WindowID.main.rawValue) {
+            MainView()
+        }
+        
+        WindowGroup(id: WindowID.photo.rawValue) {
+            ContentView()
+                .environment(appModel)
+        }
+        
+        WindowGroup(id: WindowID.video.rawValue) {
             SpatialVideoView(state: SpatialVideoState())
         }
 
