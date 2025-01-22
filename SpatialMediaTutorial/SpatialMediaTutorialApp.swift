@@ -25,11 +25,7 @@ struct SpatialMediaTutorialApp: App {
     var body: some Scene {
         WindowGroup(id: WindowID.main.rawValue) {
             MainView()
-                .onAppear {
-                    Task {
-                        await openImmersiveSpace(id: appModel.immersiveSpaceID)
-                    }
-                }
+                .environment(appModel)
         }
 
         WindowGroup(id: WindowID.photo.rawValue) {

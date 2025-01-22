@@ -16,5 +16,11 @@ struct MainView: View {
                 openWindow(id: window.rawValue)
             }
         }
+        ToggleImmersiveSpaceButton()
     }
+}
+
+#Preview {
+    MainView()
+        .environment(AppModel())
 }
