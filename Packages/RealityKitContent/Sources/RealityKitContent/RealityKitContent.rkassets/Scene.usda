@@ -1,0 +1,93 @@
+#usda 1.0
+(
+    defaultPrim = "Root"
+    metersPerUnit = 1
+    upAxis = "Y"
+)
+
+def Xform "Root"
+{
+    rel material:binding = None (
+        bindMaterialAs = "weakerThanDescendants"
+    )
+
+    def Material "Material"
+    {
+        asset inputs:LeftEye (
+            customData = {
+                dictionary realitykit = {
+                    float2 positionInSubgraph = (-423.53668, -82.1543)
+                    int stackingOrderInSubgraph = 30
+                }
+            }
+        )
+        asset inputs:RightEye (
+            customData = {
+                dictionary realitykit = {
+                    float2 positionInSubgraph = (-424.52106, 68.73633)
+                    int stackingOrderInSubgraph = 28
+                }
+            }
+        )
+        token outputs:mtlx:surface.connect = </Root/Material/UnlitSurface.outputs:out>
+        token outputs:realitykit:vertex
+        float2 ui:nodegraph:node:pos = (-73.17102, 93.80283)
+        int ui:nodegraph:node:stackingOrder = 1
+        string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["outputs:mtlx:surface"]
+        float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (655.28125, 33.683594)
+        int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 13
+
+        def Shader "UnlitSurface"
+        {
+            uniform token info:id = "ND_realitykit_unlit_surfaceshader"
+            bool inputs:applyPostProcessToneMap = 0
+            color3f inputs:color.connect = </Root/Material/CameraIndexSwitch.outputs:out>
+            bool inputs:hasPremultipliedAlpha
+            float inputs:opacity
+            float inputs:opacityThreshold
+            token outputs:out
+            float2 ui:nodegraph:node:pos = (349.33832, 70.62695)
+            int ui:nodegraph:node:stackingOrder = 33
+        }
+
+        def Shader "CameraIndexSwitch"
+        {
+            uniform token info:id = "ND_realitykit_geometry_switch_cameraindex_color3"
+            color3f inputs:left.connect = </Root/Material/Image_1.outputs:out>
+            color3f inputs:mono.connect = </Root/Material/Image_1.outputs:out>
+            color3f inputs:right.connect = </Root/Material/Image.outputs:out>
+            color3f outputs:out
+            float2 ui:nodegraph:node:pos = (67.39453, 1.9960938)
+            int ui:nodegraph:node:stackingOrder = 18
+        }
+
+        def Shader "Image"
+        {
+            uniform token info:id = "ND_image_color3"
+            color3f inputs:default = (1, 1, 1) (
+                colorSpace = "srgb_texture"
+            )
+            asset inputs:file.connect = </Root/Material.inputs:RightEye>
+            float2 inputs:texcoord
+            color3f outputs:out
+            float2 ui:nodegraph:node:pos = (-194.27734, 144.03516)
+            int ui:nodegraph:node:stackingOrder = 30
+        }
+
+        def Shader "Image_1"
+        {
+            uniform token info:id = "ND_image_color3"
+            color3f inputs:default = (1, 1, 1) (
+                colorSpace = "srgb_texture"
+            )
+            asset inputs:file.connect = </Root/Material.inputs:LeftEye>
+            string inputs:filtertype
+            float2 inputs:texcoord
+            string inputs:uaddressmode
+            color3f outputs:out
+            float2 ui:nodegraph:node:pos = (-205.41797, -71.02734)
+            int ui:nodegraph:node:stackingOrder = 29
+        }
+    }
+}
+
