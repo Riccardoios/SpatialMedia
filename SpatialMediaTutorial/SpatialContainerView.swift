@@ -24,27 +24,23 @@ class ContentState {
 }
 
 struct SpatialContainerView: View {
-    @State var state = ContentState()
+    @State var state: ContentState
 
     var body: some View {
-        HStack {
-            ScrollView(.horizontal) {
-                HStack(spacing: 300) {
-                    Spacer()
-                    ForEach(state.allMedia) { media in
-                        SpatialImageView(name: media.name)
-                            .frame(width: 537.6, height: 403.2)
-                    }
-                    Spacer()
-                }
+        TabView {
+            ForEach(state.allMedia) { media in
+                SpatialImageView(name: media.name)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    .padding()
             }
         }
+        .tabViewStyle(.page(indexDisplayMode: .always))
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
 
-
-
 #Preview(windowStyle: .automatic) {
-    SpatialContainerView()
+    @Previewable @State var state = ContentState()
+    SpatialContainerView(state: state)
         .environment(AppModel())
 }
