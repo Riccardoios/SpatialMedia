@@ -17,9 +17,9 @@ struct Media: Identifiable {
 @Observable
 class ContentState {
     let allMedia: [Media] = [
-        Media(name: "IMG_1439"),
-        Media(name: "IMG_0406"),
-        Media(name: "IMG_1659")
+        Media(name: "IMG_2520"),
+        Media(name: "IMG_2526"),
+        Media(name: "IMG_2532")
     ]
 }
 

@@ -30,7 +30,7 @@ class SpatialVideoEntity {
 @MainActor
 @Observable
 class SpatialVideoState {
-    let movieMedia = Media(name: "MOV_1619")
+    let movieMedia = Media(name: "MOV_2525")
     
     private var url: URL? {
         Bundle.main.url(forResource: movieMedia.name, withExtension: "mov")
