@@ -30,30 +30,17 @@ enum WindowID: String, CaseIterable, Identifiable {
 
 @main
 struct SpatialMediaTutorialApp: App {
-    @Environment(\.openWindow) private var openWindow
     @State private var appModel = AppModel()
 
     var body: some Scene {
-        WindowGroup(id: WindowID.main.rawValue) {
-            MainView()
-                .environment(appModel)
-        }
-
-        WindowGroup(id: WindowID.photo.rawValue) {
-            SpatialContainerView(state: ContentState())
-                .environment(appModel)
-        }
-
-        WindowGroup(id: WindowID.video.rawValue) {
-            SpatialVideoView(state: SpatialVideoState())
-        }
-
         ImmersiveSpace(id: appModel.immersiveSpaceID) {
-            ImmersiveView()
+            ImmersiveView(
+                spatialVideoState: SpatialVideoState(),
+                spatialGalleryState: SpatialGalleryState()
+            )
                 .environment(appModel)
                 .onAppear {
                     appModel.immersiveSpaceState = .open
-                    openWindow(id: WindowID.main.rawValue)
                 }
                 .onDisappear {
                     appModel.immersiveSpaceState = .closed

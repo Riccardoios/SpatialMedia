@@ -41,19 +41,3 @@ class SpatialVideoState {
         return spatialVideoEntity.makeVideoEntity(url: url!)
     }
 }
-
-struct SpatialVideoView: View {
-    @State var state = SpatialVideoState()
-    
-    var body: some View {
-        RealityView { content, attachments in
-            content.add(state.videoEntity)
-        } attachments: {
-            
-        }
-    }
-}
-
-#Preview {
-    SpatialVideoView()
-}
