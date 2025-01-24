@@ -30,7 +30,7 @@ enum WindowID: String, CaseIterable, Identifiable {
 
 @main
 struct SpatialMediaTutorialApp: App {
-    @Environment(\.openImmersiveSpace) private var openImmersiveSpace
+    @Environment(\.openWindow) private var openWindow
     @State private var appModel = AppModel()
 
     var body: some Scene {
@@ -53,6 +53,7 @@ struct SpatialMediaTutorialApp: App {
                 .environment(appModel)
                 .onAppear {
                     appModel.immersiveSpaceState = .open
+                    openWindow(id: WindowID.main.rawValue)
                 }
                 .onDisappear {
                     appModel.immersiveSpaceState = .closed
