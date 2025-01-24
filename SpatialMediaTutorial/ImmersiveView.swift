@@ -27,22 +27,10 @@ struct ImmersiveView: View {
             if let spatialPhoto = attachments.entity(for: "SpatialPhoto") {
                 spatialPhoto.position = [-0.5, 1.5, -1.5]
                 content.add(spatialPhoto)
-            }
-            
-            if let toggleButtonEntity = attachments.entity(for: "ToggleButton") {
-                toggleButtonEntity.position = [0, 2, -2]
-                content.add(toggleButtonEntity)
-            }
-                
+            } 
         } attachments: {
             Attachment(id: "SpatialPhoto") {
                 SpatialGalleryView(state: spatialGalleryState)
-            }
-            
-            Attachment(id: "ToggleButton") {
-                ToggleImmersiveSpaceButton()
-                    .padding()
-                    .glassBackgroundEffect()
             }
         }
     }
