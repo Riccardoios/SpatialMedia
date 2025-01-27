@@ -10,16 +10,9 @@ import RealityKit
 import AVFoundation
 
 class SpatialVideoEntity {
-    func makeVideoEntity(url: URL) -> Entity {
-        let asset = AVURLAsset(url: url)
-        let playerItem = AVPlayerItem(asset: asset)
-        let player = AVPlayer()
-        player.replaceCurrentItem(with: playerItem)
-        player.play()
-        
+    func makeVideoEntity(player: AVPlayer) -> Entity {
         var videoPlayerComponent = VideoPlayerComponent(avPlayer: player)
         videoPlayerComponent.desiredViewingMode = .stereo
-        
         let entity = Entity()
         entity.components.set(videoPlayerComponent)
         entity.scale *= 0.4
@@ -31,13 +24,22 @@ class SpatialVideoEntity {
 @Observable
 class SpatialVideoState {
     let movieMedia = Media(name: "MOV_2525")
+    let spatialVideoEntity = SpatialVideoEntity()
+    let player = AVPlayer()
     
-    private var url: URL? {
-        Bundle.main.url(forResource: movieMedia.name, withExtension: "mov")
+    func makeSpatialVideo() -> Entity {
+        let url = Bundle.main.url(forResource: movieMedia.name, withExtension: "mov")!
+        let asset = AVURLAsset(url: url)
+        let playerItem = AVPlayerItem(asset: asset)
+        player.replaceCurrentItem(with: playerItem)
+        return spatialVideoEntity.makeVideoEntity(player: player)
     }
     
-    var videoEntity: Entity {
-        let spatialVideoEntity = SpatialVideoEntity()
-        return spatialVideoEntity.makeVideoEntity(url: url!)
+    func play() {
+        player.play()
+    }
+    
+    func pause() {
+        player.pause()
     }
 }

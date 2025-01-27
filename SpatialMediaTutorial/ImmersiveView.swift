@@ -20,17 +20,34 @@ struct ImmersiveView: View {
                 content.add(immersiveContentEntity)
             }
             
-            let videoEntity = spatialVideoState.videoEntity
+            let videoEntity = spatialVideoState.makeSpatialVideo()
             videoEntity.position = [0.5, 1.5, -1.5]
             content.add(videoEntity)
             
             if let spatialPhoto = attachments.entity(for: "SpatialPhoto") {
                 spatialPhoto.position = [-0.5, 1.5, -1.5]
                 content.add(spatialPhoto)
-            } 
+            }
+            
+            if let videoControls = attachments.entity(for: "Video Controls") {
+                videoControls.position = [0.5, 1.3, -1.5]
+                content.add(videoControls)
+            }
         } attachments: {
             Attachment(id: "SpatialPhoto") {
                 SpatialGalleryView(state: spatialGalleryState)
+            }
+            
+            Attachment(id: "Video Controls") {
+                HStack {
+                    Button("Play") {
+                        spatialVideoState.play()
+                    }
+                    
+                    Button("Pause") {
+                        spatialVideoState.pause()
+                    }
+                }
             }
         }
     }
