@@ -9,7 +9,7 @@ import RealityKit
 import RealityKitContent
 
 struct SpatialImageView: View {
-    let name: String
+    let asset: PhotoAsset
 
     var body: some View {
         RealityView { content in
@@ -18,7 +18,7 @@ struct SpatialImageView: View {
                     var shaderGraphMaterial = try await ShaderGraphMaterial(
                         named: "/Root/Material", from: "Scene.usda",
                         in: realityKitContentBundle)
-                    let images = try getImages(url: url)
+                    let images = try getImages(url: asset.url)
                     let leftImage = try await convertTexture(from: images.left)
                     try shaderGraphMaterial.setParameter(
                         name: "LeftEye", value: .textureResource(leftImage))
@@ -41,10 +41,6 @@ struct SpatialImageView: View {
                 fatalError(error.localizedDescription)
             }
         }
-    }
-    
-    private var url: URL? {
-        Bundle.main.url(forResource: name, withExtension: "heic")
     }
 
     private func getImages(url: URL?) throws -> (left: CGImage, right: CGImage) {

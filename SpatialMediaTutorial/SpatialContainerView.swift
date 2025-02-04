@@ -16,10 +16,13 @@ struct Media: Identifiable {
 
 @Observable
 class ContentState {
-    let allMedia: [Media] = [
-        Media(name: "IMG_2520"),
-        Media(name: "IMG_2526"),
-        Media(name: "IMG_2532")
+    let photoAssets: [PhotoAsset] = [
+        PhotoAsset(id: UUID(), url: Bundle.main.url(forResource: "Sample_Photo_1", withExtension: "jpg"), photoType: .regular),
+            PhotoAsset(id: UUID(), url: Bundle.main.url(forResource: "Sample_Photo_2", withExtension: "jpg"), photoType: .regular),
+            PhotoAsset(id: UUID(), url: Bundle.main.url(forResource: "Sample_Photo_3", withExtension: "jpg"), photoType: .regular),
+            PhotoAsset(id: UUID(), url: Bundle.main.url(forResource: "Sample_SpatialPhoto_4", withExtension: "heic"), photoType: .spatial),
+            PhotoAsset(id: UUID(), url: Bundle.main.url(forResource: "Sample_SpatialPhoto_5", withExtension: "heic"), photoType: .spatial),
+            PhotoAsset(id: UUID(), url: Bundle.main.url(forResource: "Sample_SpatialPhoto_6", withExtension: "heic"), photoType: .spatial)
     ]
 }
 
@@ -28,10 +31,27 @@ struct SpatialContainerView: View {
 
     var body: some View {
         TabView {
-            ForEach(state.allMedia) { media in
-                SpatialImageView(name: media.name)
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
-                    .padding()
+            ForEach(state.photoAssets) { asset in
+                switch asset.photoType {
+                case .regular:
+                    RealityView { content in
+                        
+                    } update: { content in
+                        let cube = ModelEntity(mesh: .generateBox(size: .init(x: 0.1, y: 0.1, z: 0.1)))
+                        content.add(cube)
+                    }
+
+                case .spatial:
+                    RealityView { content in
+                        
+                    } update: { content in
+                        let sfere = ModelEntity(mesh: .generateSphere(radius: 0.1))
+                        content.add(sfere)
+                    }
+                }
+//                SpatialImageView(asset: asset)
+//                    .clipShape(RoundedRectangle(cornerRadius: 10))
+//                    .padding()
             }
         }
         .tabViewStyle(.page(indexDisplayMode: .always))
