@@ -17,45 +17,74 @@ struct Media: Identifiable {
 @Observable
 class ContentState {
     let photoAssets: [PhotoAsset] = [
-        PhotoAsset(id: UUID(), url: Bundle.main.url(forResource: "Sample_Photo_1", withExtension: "jpg"), photoType: .regular),
-            PhotoAsset(id: UUID(), url: Bundle.main.url(forResource: "Sample_Photo_2", withExtension: "jpg"), photoType: .regular),
-            PhotoAsset(id: UUID(), url: Bundle.main.url(forResource: "Sample_Photo_3", withExtension: "jpg"), photoType: .regular),
-            PhotoAsset(id: UUID(), url: Bundle.main.url(forResource: "Sample_SpatialPhoto_4", withExtension: "heic"), photoType: .spatial),
-            PhotoAsset(id: UUID(), url: Bundle.main.url(forResource: "Sample_SpatialPhoto_5", withExtension: "heic"), photoType: .spatial),
-            PhotoAsset(id: UUID(), url: Bundle.main.url(forResource: "Sample_SpatialPhoto_6", withExtension: "heic"), photoType: .spatial)
+        PhotoAsset(
+            id: UUID(),
+            url: Bundle.main.url(
+                forResource: "Sample_Photo_1", withExtension: "jpg"),
+            photoType: .regular),
+        PhotoAsset(
+            id: UUID(),
+            url: Bundle.main.url(
+                forResource: "Sample_Photo_2", withExtension: "jpg"),
+            photoType: .regular),
+        PhotoAsset(
+            id: UUID(),
+            url: Bundle.main.url(
+                forResource: "Sample_Photo_3", withExtension: "jpg"),
+            photoType: .regular),
+        PhotoAsset(
+            id: UUID(),
+            url: Bundle.main.url(
+                forResource: "Sample_SpatialPhoto_4", withExtension: "heic"),
+            photoType: .spatial),
+        PhotoAsset(
+            id: UUID(),
+            url: Bundle.main.url(
+                forResource: "Sample_SpatialPhoto_5", withExtension: "heic"),
+            photoType: .spatial),
+        PhotoAsset(
+            id: UUID(),
+            url: Bundle.main.url(
+                forResource: "Sample_SpatialPhoto_6", withExtension: "heic"),
+            photoType: .spatial),
     ]
 }
 
 struct SpatialContainerView: View {
     @State var state: ContentState
+    private let width: CGFloat = 1250
+    private let height: CGFloat = 700
 
     var body: some View {
-        TabView {
-            ForEach(state.photoAssets) { asset in
-                switch asset.photoType {
-                case .regular:
-                    RealityView { content in
-                        
-                    } update: { content in
-                        let cube = ModelEntity(mesh: .generateBox(size: .init(x: 0.1, y: 0.1, z: 0.1)))
-                        content.add(cube)
+        ScrollView(.horizontal, showsIndicators: false) {
+            LazyHStack(spacing: 0) {
+                ForEach(state.photoAssets) { asset in
+                    switch asset.photoType {
+                    case .regular:
+                        if let uiImage = UIImage(
+                            contentsOfFile: asset.url!.path)
+                        {
+                            Image(uiImage: uiImage)
+                                .resizable()
+                                .scaledToFit()
+                                .clipShape(
+                                    RoundedRectangle(cornerRadius: 30)
+                                )
+                                .frame(width: width, height: height)
+                        } else {
+                            Text("Image not found")
+                        }
+                    case .spatial:
+                        SpatialImageView(asset: asset)
+                            .frame(width: width, height: height)
+                            .background(Color.black.opacity(0.001))
                     }
 
-                case .spatial:
-                    RealityView { content in
-                        
-                    } update: { content in
-                        let sfere = ModelEntity(mesh: .generateSphere(radius: 0.1))
-                        content.add(sfere)
-                    }
                 }
-//                SpatialImageView(asset: asset)
-//                    .clipShape(RoundedRectangle(cornerRadius: 10))
-//                    .padding()
             }
         }
-        .tabViewStyle(.page(indexDisplayMode: .always))
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .scrollTargetBehavior(.paging)
+        .frame(width: width, height: height)
     }
 }
 

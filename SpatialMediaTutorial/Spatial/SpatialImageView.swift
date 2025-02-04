@@ -29,13 +29,13 @@ struct SpatialImageView: View {
 
                     let entity = ModelEntity(
                         mesh: .generatePlane(
-                            width: Float(leftImage.width) / 5000,
-                            height: Float(leftImage.height) / 5000,
-                            cornerRadius: 0.01))
-                    print(Float(leftImage.width) / 5000, Float(leftImage.height) / 5000)
+                            width: Float(leftImage.width) / 4000,
+                            height: Float(leftImage.height) / 4000,
+                            cornerRadius: 0.03))
                     entity.model?.materials = [shaderGraphMaterial]
                     return entity
                 }()
+                modelEntity.position.z = 0.01
                 content.add(modelEntity)
             } catch {
                 fatalError(error.localizedDescription)
