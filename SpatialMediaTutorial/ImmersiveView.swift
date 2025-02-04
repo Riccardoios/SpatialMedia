@@ -23,21 +23,21 @@ struct ImmersiveView: View {
             }
 
             let videoEntity = spatialVideoState.makeSpatialVideo()
-            videoEntity.position = [0.5, 1.5, -1.5]
+            videoEntity.position = [0.75, 1.5, -1.5]
             content.add(videoEntity)
 
             if let spatialPhoto = attachments.entity(for: "SpatialPhoto") {
-                spatialPhoto.position = [-0.5, 1.5, -1.5]
+                spatialPhoto.position = [-0.75, 1.5, -1.5]
                 content.add(spatialPhoto)
             }
             
             if let photoControls = attachments.entity(for: "PhotoControls") {
-                photoControls.position = [-0.5, 1.3, -1.5]
+                photoControls.position = [-0.5, 0.9, -1.5]
                 content.add(photoControls)
             }
 
             if let videoControls = attachments.entity(for: "Video Controls") {
-                videoControls.position = [0.5, 1.3, -1.5]
+                videoControls.position = [0.75, 1.3, -1.5]
                 content.add(videoControls)
             }
 
@@ -46,7 +46,7 @@ struct ImmersiveView: View {
             if let spatialPhoto = attachments.entity(for: "SpatialPhoto") {
                 spatialPhoto.position = [-0.5, 1.5, -1.5]
                 let scaling: Float = isPhotoBig ? 3.0 : 1.0
-                spatialPhoto.scale *= scaling
+                spatialPhoto.scale = [scaling, scaling, scaling]
             }
             
         } attachments: {

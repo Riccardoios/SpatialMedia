@@ -17,9 +17,11 @@ struct Media: Identifiable {
 @Observable
 class SpatialGalleryState {
     let allMedia: [Media] = [
-        Media(name: "IMG_2520"),
-        Media(name: "IMG_2526"),
-        Media(name: "IMG_2532")
+        Media(name: "1"),
+        Media(name: "2"),
+        Media(name: "3"),
+        Media(name: "4"),
+        Media(name: "5")
     ]
 }
 
