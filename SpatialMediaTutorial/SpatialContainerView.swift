@@ -45,15 +45,7 @@ class ContentState {
         PhotoAsset(
             id: UUID(),
             url: Bundle.main.url(
-                forResource: "9", withExtension: "jpg"),
-            photoType: .regular),
-        PhotoAsset(
-            id: UUID(),
-            url: Bundle.main.url(forResource: "10", withExtension: "jpg"),
-            photoType: .regular),
-        PhotoAsset(
-            id: UUID(),
-            url: Bundle.main.url(forResource: "11", withExtension: "jpg"),
+                forResource: "9", withExtension: "heic"),
             photoType: .regular),
     ]
 }
@@ -110,7 +102,7 @@ struct SpatialContainerView: View {
             }
             .glassBackgroundEffect()
             .padding()
-            
+
         }
     }
 }
