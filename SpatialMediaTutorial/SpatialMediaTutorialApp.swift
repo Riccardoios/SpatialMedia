@@ -43,6 +43,8 @@ struct SpatialMediaTutorialApp: App {
             SpatialContainerView(state: ContentState())
                 .environment(appModel)
         }
+        .windowResizability(.contentSize)
+        .windowStyle(.plain)
 
         WindowGroup(id: WindowID.video.rawValue) {
             SpatialVideoView(state: SpatialVideoState())

@@ -20,40 +20,55 @@ class ContentState {
         PhotoAsset(
             id: UUID(),
             url: Bundle.main.url(
-                forResource: "Sample_Photo_1", withExtension: "jpg"),
-            photoType: .regular),
-        PhotoAsset(
-            id: UUID(),
-            url: Bundle.main.url(
-                forResource: "Sample_Photo_2", withExtension: "jpg"),
-            photoType: .regular),
-        PhotoAsset(
-            id: UUID(),
-            url: Bundle.main.url(
-                forResource: "Sample_Photo_3", withExtension: "jpg"),
-            photoType: .regular),
-        PhotoAsset(
-            id: UUID(),
-            url: Bundle.main.url(
-                forResource: "Sample_SpatialPhoto_4", withExtension: "heic"),
+                forResource: "4", withExtension: "heic"),
             photoType: .spatial),
         PhotoAsset(
             id: UUID(),
             url: Bundle.main.url(
-                forResource: "Sample_SpatialPhoto_5", withExtension: "heic"),
+                forResource: "5", withExtension: "heic"),
             photoType: .spatial),
         PhotoAsset(
             id: UUID(),
             url: Bundle.main.url(
-                forResource: "Sample_SpatialPhoto_6", withExtension: "heic"),
+                forResource: "6", withExtension: "heic"),
             photoType: .spatial),
+        PhotoAsset(
+            id: UUID(),
+            url: Bundle.main.url(
+                forResource: "7", withExtension: "heic"),
+            photoType: .spatial),
+        PhotoAsset(
+            id: UUID(),
+            url: Bundle.main.url(
+                forResource: "8", withExtension: "heic"),
+            photoType: .spatial),
+        PhotoAsset(
+            id: UUID(),
+            url: Bundle.main.url(
+                forResource: "9", withExtension: "jpg"),
+            photoType: .regular),
+        PhotoAsset(
+            id: UUID(),
+            url: Bundle.main.url(forResource: "10", withExtension: "jpg"),
+            photoType: .regular),
+        PhotoAsset(
+            id: UUID(),
+            url: Bundle.main.url(forResource: "11", withExtension: "jpg"),
+            photoType: .regular),
     ]
 }
 
 struct SpatialContainerView: View {
     @State var state: ContentState
-    private let width: CGFloat = 1250
-    private let height: CGFloat = 700
+    @State private var isFullScreen: Bool = false
+    private let defaultWidth: CGFloat = 1250
+    private let defaultHeight: CGFloat = 700
+    private var width: CGFloat {
+        isFullScreen ? defaultWidth * 2 : defaultWidth
+    }
+    private var height: CGFloat {
+        isFullScreen ? defaultHeight * 2 : defaultHeight
+    }
 
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
@@ -75,16 +90,28 @@ struct SpatialContainerView: View {
                             Text("Image not found")
                         }
                     case .spatial:
-                        SpatialImageView(asset: asset)
-                            .frame(width: width, height: height)
-                            .background(Color.black.opacity(0.001))
+                        SpatialImageView(
+                            asset: asset, isFullScreen: isFullScreen
+                        )
+                        .frame(width: width, height: height)
+                        .background(Color.black.opacity(0.001))
                     }
-
                 }
             }
         }
         .scrollTargetBehavior(.paging)
         .frame(width: width, height: height)
+        .ornament(attachmentAnchor: .scene(.topTrailing)) {
+            Button {
+                isFullScreen.toggle()
+            } label: {
+                Image(
+                    systemName: "arrow.down.left.and.arrow.up.right.rectangle")
+            }
+            .glassBackgroundEffect()
+            .padding()
+            
+        }
     }
 }
 

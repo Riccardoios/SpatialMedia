@@ -10,6 +10,7 @@ import RealityKitContent
 
 struct SpatialImageView: View {
     let asset: PhotoAsset
+    let isFullScreen: Bool
 
     var body: some View {
         RealityView { content in
@@ -36,9 +37,14 @@ struct SpatialImageView: View {
                     return entity
                 }()
                 modelEntity.position.z = 0.01
+                modelEntity.name = "photoEntity"
                 content.add(modelEntity)
             } catch {
                 fatalError(error.localizedDescription)
+            }
+        } update: { content in
+            if let photoEntity = content.entities.first(where: { $0.name == "photoEntity" }) {
+                photoEntity.scale = isFullScreen ? [2, 2, 2] : [1, 1, 1]
             }
         }
     }
