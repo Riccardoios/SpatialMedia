@@ -55,7 +55,10 @@ struct SpatialMediaTutorialApp: App {
                 .environment(appModel)
                 .onAppear {
                     appModel.immersiveSpaceState = .open
-                    openWindow(id: WindowID.main.rawValue)
+                    if !appModel.didMainViewOpen {
+                        openWindow(id: WindowID.main.rawValue)
+                        appModel.didMainViewOpen = true
+                    }
                 }
                 .onDisappear {
                     appModel.immersiveSpaceState = .closed
